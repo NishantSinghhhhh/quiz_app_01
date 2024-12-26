@@ -6,7 +6,8 @@ import { useAuth } from "../context/AuthContext"; // Import the custom hook
 import { FaEye, FaEyeSlash } from "react-icons/fa"; // Import eye icons
 // import logo from "../assets/logo.svg";
 import logo1 from "../assets/AWES_Logo.jpg";
-
+import logo3 from "../assets/Ait.png"
+import logo4 from "../assets/Ait.svg";
 interface FormState {
   username: string;
   password: string;
@@ -60,7 +61,7 @@ const Login: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex justify-between items-center h-20">
             <img src={logo} alt="Logo" className="h-12 w-auto" />
-            <img src={logo1} alt="AWES Logo" className="h-14" />
+            <img src={logo4} alt="AWES Logo" className="h-12" />
           </div>
         </div>
       </nav>
@@ -69,9 +70,10 @@ const Login: React.FC = () => {
       <div className="bg-white p-6 rounded-[16px] shadow-[0px_4px_8px_rgba(0,0,0,0.25)] w-[90%] md:w-[40%] lg:w-[27%]">
         <img src={logo} alt="Logo" className="w-4/12 mb-6" />
 
-        <h1 className="text-2xl font-bold text-black mb-2 text-center">Navyug Results Portal</h1>
+        <h1 className="text-2xl font-bold text-black mb-2 text-center">Navyug Result Portal</h1>
         <p className="text-gray-600 mb-6 text-center text-sm">
-        Fill Up Your Details to View Qualified Teams For Navyug AI Hackathon 2024-25
+        Fill Up Your Details to View Qualified Teams For 
+        <br/>Navyug AI Hackathon 2024-25 (Round 1)
         </p>
 
         <form onSubmit={handleSubmit}>

@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import React, { createContext, useContext, useState, ReactNode, useEffect } from "react";
 
 // Define the type for the Auth context
 interface AuthContextType {
@@ -22,16 +22,39 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [username, setUsername] = useState<string | null>(null);
   const [password, setPassword] = useState<string | null>(null);
 
+  // Load authentication state from localStorage on initialization
+  useEffect(() => {
+    const storedIsAuthenticated = localStorage.getItem("isAuthenticated");
+    const storedUsername = localStorage.getItem("username");
+    const storedPassword = localStorage.getItem("password");
+
+    if (storedIsAuthenticated === "true" && storedUsername && storedPassword) {
+      setIsAuthenticated(true);
+      setUsername(storedUsername);
+      setPassword(storedPassword);
+    }
+  }, []);
+
   const login = (username: string, password: string) => {
     setIsAuthenticated(true);
     setUsername(username);
     setPassword(password);
+
+    // Save to localStorage
+    localStorage.setItem("isAuthenticated", "true");
+    localStorage.setItem("username", username);
+    localStorage.setItem("password", password);
   };
 
   const logout = () => {
     setIsAuthenticated(false);
     setUsername(null);
     setPassword(null);
+
+    // Clear from localStorage
+    localStorage.removeItem("isAuthenticated");
+    localStorage.removeItem("username");
+    localStorage.removeItem("password");
   };
 
   return (
